@@ -1,0 +1,46 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+<xs:element name="getPaymentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Payment" type="tns:Payment"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPaymentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Response" type="tns:Response"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Payment">
+        <xs:sequence>
+            <xs:element name="AnsAuthPay" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="AdditionInfo" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="PNameID" type="xs:string"/>
+                                    <xs:element name="PValue" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Response">
+        <xs:sequence>
+            <xs:element name="Error" type="xs:int"/>
+            <xs:element name="MSG" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
